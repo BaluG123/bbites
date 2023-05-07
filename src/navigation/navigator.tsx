@@ -36,19 +36,21 @@ const Navigation = () => {
                         return <MaterialCommunityIcons name={MaterialCommunityIcon} size={30} color={'#1DA1F2'} />;
                     },
                     tabBarLabelStyle: {
-                        fontSize: 15,
+                        fontSize: 16,
                         fontWeight: 'bold',
                         color: '#333',
+                        width:120,
+                        marginHorizontal:20
                     },
                     tabStyle: { height: 70 },
-                    labelStyle: { fontSize: 24 },
+                    labelStyle: { fontSize: 20 },
                     headerStyle: {
                         backgroundColor: '#1DA1F2',
                     },
                     headerTintColor: '#fff',
                     headerTitleStyle: {
                         fontWeight: 'bold',
-                        fontFamily: 'Poppins'
+                        fontFamily: 'Poppins',
                     },
                     headerTitleAlign: 'center'
                 })}
@@ -56,7 +58,7 @@ const Navigation = () => {
                 <Tab.Screen name="Home" component={Home} />
                 <Tab.Screen name="Current Affairs" component={Currentaffairs} />
                 <Tab.Screen name="NCERT" component={Ncert} />
-                <Tab.Screen name="General Knowledge" component={Generalknowledge} />
+                <Tab.Screen name="GK" component={Generalknowledge} />
             </Tab.Navigator>
         </NavigationContainer>
     )

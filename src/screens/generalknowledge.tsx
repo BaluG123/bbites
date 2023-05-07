@@ -10,6 +10,7 @@ const Generalknowledge = () => {
     const [isLoading, setLoading] = useState(true);
     const [hasMoreQuestions, setHasMoreQuestions] = useState(true);
     const [error, setError] = useState(null);
+    const [loadingHeader, setLoadingHeader] = useState(true);
 
     useEffect(() => {
         axios.get(`https://CompetativeQuiz.pythonanywhere.com/quiz/generalapi/?page=${page}&page_size=10`)
@@ -17,6 +18,7 @@ const Generalknowledge = () => {
                 const newData = [...data, ...response.data.results];
                 setData(newData);
                 setLoading(false);
+                setLoadingHeader(false);
                 setHasMoreQuestions(newData.length < response.data.count)
             })
             .catch((error) => {
@@ -34,11 +36,26 @@ const Generalknowledge = () => {
         );
     };
 
+    const Header = () => {
+        if (loadingHeader) {
+            return (
+                <View style={{ paddingVertical: 20 }}>
+                    <ActivityIndicator size="large" />
+                </View>
+            );
+        }
+        // return (
+        //     <View style={{ paddingVertical: 0 }}>
+        //         <Text>knowledge is power</Text>
+        //     </View>
+        // );
+    };
+
     const renderEndMessage = () => {
         if (!hasMoreQuestions) {
             return (
                 <View style={{ padding: 16 }}>
-                    <Text>No more questions available. More questions are coming soon!</Text>
+                    <Text style={{color:'black'}}>No more questions available. More questions are coming soon!</Text>
                 </View>
             );
         }
@@ -64,6 +81,7 @@ const Generalknowledge = () => {
             keyExtractor={(item) => item.id.toString()}
             onEndReached={handleLoadMore}
             onEndReachedThreshold={0.5}
+            ListHeaderComponent={<Header />}
             ListFooterComponent={renderFooter}
             ListFooterComponent={renderEndMessage}
         />

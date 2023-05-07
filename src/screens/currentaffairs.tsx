@@ -58,7 +58,7 @@ const Currentaffairs = () => {
         if (!hasMoreQuestions) {
             return (
                 <View style={{ padding: 16 }}>
-                    <Text>No more questions available. More questions are coming soon!</Text>
+                    <Text style={{color:'black'}}>No more questions available. More questions are coming soon!</Text>
                 </View>
             );
         }
