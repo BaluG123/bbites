@@ -7,6 +7,7 @@ import Ncert from "../screens/ncert";
 import Generalknowledge from "../screens/generalknowledge";
 import Currentaffairs from "../screens/currentaffairs";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Jobs from "../screens/jobs";
 const Tab = createBottomTabNavigator()
 
 
@@ -21,16 +22,19 @@ const Navigation = () => {
 
                         if (route.name === 'Home') {
                             MaterialCommunityIcon = focused
-                                ? 'alpha-h-circle'
-                                : 'alpha-h-circle-outline';
+                                ? 'home'
+                                : 'home-outline';
                         } else if (route.name === 'NCERT') {
-                            MaterialCommunityIcon = focused ? 'alpha-n-circle' : 'alpha-n-circle-outline';
+                            MaterialCommunityIcon = focused ? 'book-open-page-variant' : 'book-open-page-variant-outline';
                         } else if (route.name === 'General Knowledge') {
                             MaterialCommunityIcon = focused ? 'alpha-g-circle' : 'alpha-g-circle-outline';
-                        } else if (route.name === 'Current Affairs') {
-                            MaterialCommunityIcon = focused ? 'alpha-c-circle' : 'alpha-c-circle-outline';
+                        } else if (route.name === 'CA') {
+                            MaterialCommunityIcon = focused ? 'newspaper-variant-multiple-outline' : 'newspaper-variant-multiple';
                         } else if (route.name === 'GK') {
-                            MaterialCommunityIcon = focused ? 'alpha-g-circle' : 'alpha-g-circle-outline';
+                            MaterialCommunityIcon = focused ? 'file-document-multiple' : 'file-document-multiple-outline';
+                        }
+                        else if (route.name === 'jobs') {
+                            MaterialCommunityIcon = focused ? 'briefcase-account' : 'briefcase-account-outline';
                         }
                         // You can return any component that you like here!
                         return <MaterialCommunityIcons name={MaterialCommunityIcon} size={30} color={'#1DA1F2'} />;
@@ -56,9 +60,10 @@ const Navigation = () => {
                 })}
             >
                 <Tab.Screen name="Home" component={Home} />
-                <Tab.Screen name="Current Affairs" component={Currentaffairs} />
+                <Tab.Screen name="CA" component={Currentaffairs} />
                 <Tab.Screen name="NCERT" component={Ncert} />
                 <Tab.Screen name="GK" component={Generalknowledge} />
+                <Tab.Screen name="jobs" component={Jobs} />
             </Tab.Navigator>
         </NavigationContainer>
     )

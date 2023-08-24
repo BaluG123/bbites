@@ -16,3 +16,29 @@ class App extends React.Component {
 }
 
 export default App;
+
+// import React, { useEffect } from 'react';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
+// import SplashScreen from 'react-native-splash-screen';
+// import Navigation from './src/navigation/navigator';
+// import SplashScreenComponent from './src/screens/SplashScreenComponent';
+
+// const Stack = createStackNavigator();
+
+// const App = () => {
+//     useEffect(() => {
+//         SplashScreen.hide();
+//     }, [1000]);
+
+//     return (
+//         <NavigationContainer>
+//             <Stack.Navigator headerMode="none">
+//                 <Stack.Screen name="Splash" component={SplashScreenComponent} />
+//                 <Stack.Screen name="Home" component={Navigation} />
+//             </Stack.Navigator>
+//         </NavigationContainer>
+//     );
+// };
+
+// export default App;
