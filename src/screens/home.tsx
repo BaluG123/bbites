@@ -76,15 +76,43 @@
 
 // export default Home;
 
-import React from 'react';
+import React,{useState} from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 
 function Home({ navigation }) {
+
+    const [aboutUsExpanded, setAboutUsExpanded] = useState(false);
+    const [contactUsExpanded, setContactUsExpanded] = useState(false);
+
+    const toggleAboutUs = () => {
+        setAboutUsExpanded(!aboutUsExpanded);
+        // Close the "Contact Us" section if it's open
+        if (contactUsExpanded) {
+          setContactUsExpanded(false);
+        }
+      };
+    
+      const toggleContactUs = () => {
+        setContactUsExpanded(!contactUsExpanded);
+        // Close the "About Us" section if it's open
+        if (aboutUsExpanded) {
+          setAboutUsExpanded(false);
+        }
+      };
+
     return (
-        <ScrollView contentContainerStyle={styles.container}>
+        <View>
+    <TouchableOpacity onPress={toggleAboutUs}>
+    <Text style={styles.sectionTitle}>About Us</Text>
+      </TouchableOpacity>
+      {aboutUsExpanded && (
+                  <ScrollView contentContainerStyle={styles.container}>
             <ImageBackground
+                // source={{
+                //     uri: 'https://images.unsplash.com/photo-1560807707-8cc77767d783',
+                // }}
                 source={{
-                    uri: 'https://images.unsplash.com/photo-1560807707-8cc77767d783',
+                    uri: 'https://images.unsplash.com/photo-1535905496755-26ae35d0ae54',
                 }}
                 style={styles.backgroundImage}
             >
@@ -107,6 +135,16 @@ function Home({ navigation }) {
                 </TouchableOpacity>
             </ImageBackground>
         </ScrollView>
+      )}
+              <TouchableOpacity onPress={toggleContactUs}>
+        <Text style={styles.sectionTitle}>Contact Us</Text>
+      </TouchableOpacity>
+      {contactUsExpanded && (
+        <Text style={styles.sectionContent}>
+          Contact information: contact@example.com
+        </Text>
+      )}
+        </View>
     );
 }
 
@@ -134,7 +172,7 @@ const styles = StyleSheet.create({
     subtitle: {
         fontSize: 18,
         textAlign: 'center',
-        color: 'white',
+        color:'white',
         marginBottom: 15,
     },
     button: {
@@ -150,6 +188,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 16,
     },
+    sectionTitle:{
+        color:'black',
+        fontSize:20
+    }
 });
 
 export default Home;

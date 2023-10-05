@@ -42,16 +42,11 @@ const Currentaffairs = () => {
     const Header = () => {
         if (loadingHeader) {
             return (
-                <View style={{ paddingVertical: 20 }}>
-                    <ActivityIndicator size="large" />
+                <View style={{ paddingVertical: 20, marginTop:300 }}>
+                    <ActivityIndicator size="large" color={'#1DA1F2'} />
                 </View>
             );
         }
-        // return (
-        //     <View style={{ paddingVertical: 0 }}>
-        //         <Text>knowledge is power</Text>
-        //     </View>
-        // );
     };
 
     const renderEndMessage = () => {

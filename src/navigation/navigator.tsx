@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator()
 
 const Navigation = () => {
     return (
-        <NavigationContainer>
+        <NavigationContainer independent={true}>
             <Tab.Navigator
                 initialRouteName="Home"
                 screenOptions={({ route }) => ({
@@ -59,7 +59,7 @@ const Navigation = () => {
                     headerTitleAlign: 'center'
                 })}
             >
-                <Tab.Screen name="Home" component={Home} />
+                {/* <Tab.Screen name="Home" component={Home} /> */}
                 <Tab.Screen name="CA" component={Currentaffairs} />
                 <Tab.Screen name="NCERT" component={Ncert} />
                 <Tab.Screen name="GK" component={Generalknowledge} />

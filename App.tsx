@@ -1,44 +1,41 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React,{useEffect} from "react";
 import Navigation from "./src/navigation/navigator";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+// import DrawerNavigator from "./src/navigation/Drawernavigation";
+import SplashComp from "./src/screens/SplashComp";
+const Stack = createStackNavigator();
+import SplashScreen from 'react-native-splash-screen';
 
-class App extends React.Component {
-  constructor(props: any) {
-    super(props)
-  }
-  render() {
+const App = () => {
+  
+  useEffect(() => {
+    // Hide the splash screen after 3 seconds
+    setTimeout(() => {
+        SplashScreen.hide();
+
+        // Navigate to your navigation part (e.g., the 'Navigation' component)
+        // or the desired initial screen within your navigation
+        // You can use 'navigation.navigate' to achieve this.
+        // Example: navigation.navigate('HomeScreen');
+    }, 1000); // 3000 milliseconds (3 seconds)
+}, []);
+   
     return (
-      <View style={{ flex: 1 }}>
-        <Navigation />
-      </View>
-    )
-  }
-}
+        <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{
+                headerShown: false, // Hide header for all screens
+              }}
+            >
+                <Stack.Screen name="Splash" component={SplashComp} />
+                <Stack.Screen name="Navigation" component={Navigation} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
 
 export default App;
 
-// import React, { useEffect } from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
-// import SplashScreen from 'react-native-splash-screen';
-// import Navigation from './src/navigation/navigator';
-// import SplashScreenComponent from './src/screens/SplashScreenComponent';
 
-// const Stack = createStackNavigator();
-
-// const App = () => {
-//     useEffect(() => {
-//         SplashScreen.hide();
-//     }, [1000]);
-
-//     return (
-//         <NavigationContainer>
-//             <Stack.Navigator headerMode="none">
-//                 <Stack.Screen name="Splash" component={SplashScreenComponent} />
-//                 <Stack.Screen name="Home" component={Navigation} />
-//             </Stack.Navigator>
-//         </NavigationContainer>
-//     );
-// };
-
-// export default App;
