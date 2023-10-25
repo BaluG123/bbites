@@ -13,7 +13,7 @@ const SplashComp = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('../components/logo.png')} style={styles.icon} />
-      <Text style={styles.appName}>BrainBites</Text>
+      <Text style={styles.appName}>GovJob Guru</Text>
       <Text style={styles.welcomeText}>Welcome to App</Text>
     </View>
   );

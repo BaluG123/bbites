@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "125996311272",
+    "project_id": "govjob-guru",
+    "storage_bucket": "govjob-guru.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:125996311272:android:55d123c3c42c6022595f5d",
+        "android_client_info": {
+          "package_name": "com.brainbites"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD37UvlwzyOGw5FF8LZKXZlEboLDuhV2LY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import { FlatList, Text, View, ActivityIndicator } from 'react-native';
 import { styles } from '../components/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import axios from 'axios';
+import { InterstitialAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
 
 const Ncert = () => {
     const [data, setData] = useState([]);
@@ -12,7 +13,16 @@ const Ncert = () => {
     const [error, setError] = useState(null);
     const [loadingHeader, setLoadingHeader] = useState(true);
 
+    const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
+        requestNonPersonalizedAdsOnly: true,
+        keywords: ['fashion', 'clothing'],
+      });
+
     useEffect(() => {
+        interstitial.load();
+        setTimeout(() => {
+          interstitial.show()
+        }, 20000);
         axios.get(`https://CompetativeQuiz.pythonanywhere.com/quiz/ncertapi/?page=${page}&page_size=10`)
             .then((response) => {
                 const newData = response.data.results.filter((question) => {

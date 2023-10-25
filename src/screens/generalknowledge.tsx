@@ -3,6 +3,8 @@ import { FlatList, Text, View, ActivityIndicator } from 'react-native';
 import { styles } from '../components/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import axios from 'axios';
+import { GAMBannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'; 
+
 
 const Generalknowledge = () => {
     const [data, setData] = useState([]);
@@ -70,6 +72,14 @@ const Generalknowledge = () => {
     };
 
     return (
+        <>
+        <GAMBannerAd
+        unitId={TestIds.BANNER}
+        sizes={[BannerAdSize.FULL_BANNER]}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+      />
         <FlatList
             data={data}
             renderItem={({ item, index }) =>
@@ -85,6 +95,7 @@ const Generalknowledge = () => {
             ListFooterComponent={renderFooter}
             ListFooterComponent={renderEndMessage}
         />
+        </>
     );
 };
 

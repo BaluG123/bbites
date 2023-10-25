@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, ActivityIndicator } from 'react-native';
 import { styles } from '../components/styles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
+import { GAMBannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'; 
 
 const Currentaffairs = () => {
     const [data, setData] = useState([]);
@@ -68,6 +69,14 @@ const Currentaffairs = () => {
     };
 
     return (
+        <>
+        <GAMBannerAd
+        unitId={TestIds.BANNER}
+        sizes={[BannerAdSize.FULL_BANNER]}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: true,
+        }}
+      />
         <FlatList
             data={data}
             renderItem={({ item, index }) =>
@@ -83,6 +92,7 @@ const Currentaffairs = () => {
             ListFooterComponent={renderFooter}
             ListFooterComponent={renderEndMessage}
         />
+        </>
     );
 };
 

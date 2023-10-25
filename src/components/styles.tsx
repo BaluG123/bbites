@@ -1,4 +1,7 @@
 import { StyleSheet } from "react-native";
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { responsiveFontSize as fs } from "react-native-responsive-dimensions";
+
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -6,7 +9,6 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-start',
         // justifyContent: 'flex-start',
         padding: 20,
-
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
         // flexDirection: 'row',
@@ -16,14 +18,14 @@ export const styles = StyleSheet.create({
     questionText: {
         fontFamily: 'Georgia',
         fontWeight: 'bold',
-        fontSize: 22,
+        fontSize: fs(2.5),
         color: '#1a2d46',
         marginLeft: 5
     },
     answerText: {
         fontFamily: 'Georgia',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: fs(2.4),
         color: '#6e6e6e',
         marginBottom: 10,
         // borderBottomWidth: 1,

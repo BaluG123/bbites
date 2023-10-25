@@ -2,13 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, ScrollView, TouchableOpacity, Linking, StyleSheet,ActivityIndicator,RefreshControl,Share } from 'react-native';
 import axios from 'axios';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { AppOpenAd, TestIds } from 'react-native-google-mobile-ads'; 
+import Ncert from './ncert';
 
-const Jobs = () => {
+const Jobs = ({navigation}) => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
 
+  const appOpenAd = AppOpenAd.createForAdRequest(TestIds.APP_OPEN, {
+    requestNonPersonalizedAdsOnly: true,
+    keywords: ['fashion', 'clothing'],
+  });
+
   useEffect(() => {
+    appOpenAd.load();
+    setTimeout(() => {
+    appOpenAd.show();
+    }, 10000);
     // Fetch job data from your API
     axios.get('https://CompetativeQuiz.pythonanywhere.com/quiz/jobapi')
       .then(response => {
@@ -99,7 +110,7 @@ const Jobs = () => {
           <TouchableOpacity onPress={() => handleShare(job)} style={styles.shareButton}>
           <MaterialCommunityIcons name="share-variant" size={30} color="#1DA1F2" />
           </TouchableOpacity>
-        </TouchableOpacity>
+         </TouchableOpacity>
       ))
   )}
     </ScrollView>
