@@ -8,18 +8,15 @@ import SplashComp from "./src/screens/SplashComp";
 const Stack = createStackNavigator();
 import SplashScreen from 'react-native-splash-screen';
 
+
 const App = () => {
   
   useEffect(() => {
     // Hide the splash screen after 3 seconds
     setTimeout(() => {
         SplashScreen.hide();
-
-        // Navigate to your navigation part (e.g., the 'Navigation' component)
-        // or the desired initial screen within your navigation
-        // You can use 'navigation.navigate' to achieve this.
-        // Example: navigation.navigate('HomeScreen');
     }, 1000); // 3000 milliseconds (3 seconds)
+    
 }, []);
    
     return (

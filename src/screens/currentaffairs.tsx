@@ -3,7 +3,7 @@ import { FlatList, Text, View, ActivityIndicator } from 'react-native';
 import { styles } from '../components/styles';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
-import { GAMBannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'; 
+import { BannerAdSize, TestIds,BannerAd } from 'react-native-google-mobile-ads';
 
 const Currentaffairs = () => {
     const [data, setData] = useState([]);
@@ -12,6 +12,9 @@ const Currentaffairs = () => {
     const [hasMoreQuestions, setHasMoreQuestions] = useState(true);
     const [error, setError] = useState(null);
     const [loadingHeader, setLoadingHeader] = useState(true);
+   
+    const adUnitId = `ca-app-pub-2627956667785383/9081767189`;
+
 
     useEffect(() => {
         axios.get(`https://CompetativeQuiz.pythonanywhere.com/quiz/Currentapi/?page=${page}&page_size=10`)
@@ -43,7 +46,7 @@ const Currentaffairs = () => {
     const Header = () => {
         if (loadingHeader) {
             return (
-                <View style={{ paddingVertical: 20, marginTop:300 }}>
+                <View style={{ paddingVertical: 20, marginTop: 300 }}>
                     <ActivityIndicator size="large" color={'#1DA1F2'} />
                 </View>
             );
@@ -54,7 +57,7 @@ const Currentaffairs = () => {
         if (!hasMoreQuestions) {
             return (
                 <View style={{ padding: 16 }}>
-                    <Text style={{color:'black'}}>No more questions available. More questions are coming soon!</Text>
+                    <Text style={{ color: 'black' }}>No more questions available. More questions are coming soon!</Text>
                 </View>
             );
         }
@@ -68,30 +71,30 @@ const Currentaffairs = () => {
         }
     };
 
+
     return (
         <>
-        <GAMBannerAd
-        unitId={TestIds.BANNER}
-        sizes={[BannerAdSize.FULL_BANNER]}
-        requestOptions={{
-          requestNonPersonalizedAdsOnly: true,
-        }}
-      />
-        <FlatList
-            data={data}
-            renderItem={({ item, index }) =>
-                <View style={styles.container}>
-                    <Text style={styles.questionText}>{`${index + 1}. ${item.question}`}</Text>
-                    <Text style={styles.answerText}><MaterialIcons name="arrow-right-alt" size={30} style={styles.arrowIcon} />{item.answer}</Text>
-                </View>
-            }
-            keyExtractor={(item) => item.id.toString()}
-            onEndReached={handleLoadMore}
-            onEndReachedThreshold={0.5}
-            ListHeaderComponent={<Header />}
-            ListFooterComponent={renderFooter}
-            ListFooterComponent={renderEndMessage}
-        />
+            {/* <View style={{ position: 'absolute', bottom: 0, width: '100%' }}> */}
+            <BannerAd
+                unitId={adUnitId}
+                size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+            />
+            {/* </View> */}
+            <FlatList
+                data={data}
+                renderItem={({ item, index }) =>
+                    <View style={styles.container}>
+                        <Text style={styles.questionText}>{`${index + 1}. ${item.question}`}</Text>
+                        <Text style={styles.answerText}><MaterialIcons name="arrow-right-alt" size={30} style={styles.arrowIcon} />{item.answer}</Text>
+                    </View>
+                }
+                keyExtractor={(item) => item.id.toString()}
+                onEndReached={handleLoadMore}
+                onEndReachedThreshold={0.5}
+                ListHeaderComponent={<Header />}
+                ListFooterComponent={renderFooter}
+                ListFooterComponent={renderEndMessage}
+            />
         </>
     );
 };

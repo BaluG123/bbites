@@ -74,10 +74,10 @@ const Generalknowledge = () => {
     return (
         <>
         <GAMBannerAd
-        unitId={TestIds.BANNER}
+        unitId='ca-app-pub-2627956667785383/3716037667'
         sizes={[BannerAdSize.FULL_BANNER]}
         requestOptions={{
-          requestNonPersonalizedAdsOnly: true,
+          requestNonPersonalizedAdsOnly: false,
         }}
       />
         <FlatList

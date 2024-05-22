@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Text, View, ActivityIndicator } from 'react-native';
 import { styles } from '../components/styles';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios';
-import { InterstitialAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
+import { GAMBannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads'; 
+// import { InterstitialAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
 
 const Ncert = () => {
     const [data, setData] = useState([]);
@@ -13,16 +14,16 @@ const Ncert = () => {
     const [error, setError] = useState(null);
     const [loadingHeader, setLoadingHeader] = useState(true);
 
-    const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
-        requestNonPersonalizedAdsOnly: true,
-        keywords: ['fashion', 'clothing'],
-      });
+    // const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
+    //     requestNonPersonalizedAdsOnly: true,
+    //     keywords: ['fashion', 'clothing'],
+    //   });
 
     useEffect(() => {
-        interstitial.load();
-        setTimeout(() => {
-          interstitial.show()
-        }, 20000);
+        // interstitial.load();
+        // setTimeout(() => {
+        //   interstitial.show()
+        // }, 20000);
         axios.get(`https://CompetativeQuiz.pythonanywhere.com/quiz/ncertapi/?page=${page}&page_size=10`)
             .then((response) => {
                 const newData = response.data.results.filter((question) => {
@@ -82,6 +83,14 @@ const Ncert = () => {
     };
 
     return (
+        <>
+    <GAMBannerAd
+        unitId='ca-app-pub-2627956667785383/3716037667'
+        sizes={[BannerAdSize.FULL_BANNER]}
+        requestOptions={{
+          requestNonPersonalizedAdsOnly: false,
+        }}
+      />
         <FlatList
             data={data}
             renderItem={({ item, index }) =>
@@ -97,6 +106,7 @@ const Ncert = () => {
             ListFooterComponent={renderFooter}
             ListFooterComponent={renderEndMessage}
         />
+        </>
     );
 };
 
