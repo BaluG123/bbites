@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const currentaffairs = () => {
+const MockTests = () => {
   return (
     <View>
-      <Text>currentaffairs</Text>
+      <Text>MockTests</Text>
     </View>
   );
 };
 
-export default currentaffairs;
+export default MockTests;

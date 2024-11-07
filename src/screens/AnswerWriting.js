@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const currentaffairs = () => {
+const AnswerWriting = () => {
   return (
     <View>
-      <Text>currentaffairs</Text>
+      <Text>AnswerWriting</Text>
     </View>
   );
 };
 
-export default currentaffairs;
+export default AnswerWriting;

@@ -1,12 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-const currentaffairs = () => {
+const OptionalSubjects = () => {
   return (
     <View>
-      <Text>currentaffairs</Text>
+      <Text>OptionalSubjects</Text>
     </View>
   );
 };
 
-export default currentaffairs;
+export default OptionalSubjects;

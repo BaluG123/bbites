@@ -28,6 +28,14 @@ import MainsPrelimsQuestions from './src/screens/MainsPrelimsQuestions';
 import {Provider} from 'react-redux';
 import {store} from './src/store/store';
 import UPSCSyllabusScreen from './src/screens/UPSCSyllabusScreen';
+import Currentaffairs from './src/screens/currentaffairsold';
+import PreviousYearPapers from './src/screens/PreviousYearPapers';
+import DailyQuiz from './src/screens/DailyQuiz';
+import AnswerWriting from './src/screens/AnswerWriting';
+import OptionalSubjects from './src/screens/OptionalSubjects';
+import StudyPlans from './src/screens/StudyPlans';
+import NewsAnalysis from './src/screens/NewsAnalysis';
+import MockTests from './src/screens/MockTests';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +70,17 @@ export default function App() {
             name="UPSCSyllabusScreen"
             component={UPSCSyllabusScreen}
           />
+          <Stack.Screen name="CurrentAffairs" component={Currentaffairs} />
+          <Stack.Screen
+            name="PreviousYearPapers"
+            component={PreviousYearPapers}
+          />
+          <Stack.Screen name="DailyQuiz" component={DailyQuiz} />
+          <Stack.Screen name="AnswerWriting" component={AnswerWriting} />
+          <Stack.Screen name="OptionalSubjects" component={OptionalSubjects} />
+          <Stack.Screen name="StudyPlans" component={StudyPlans} />
+          <Stack.Screen name="NewsAnalysis" component={NewsAnalysis} />
+          <Stack.Screen name="MockTests" component={MockTests} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
