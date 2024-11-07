@@ -1,0 +1,504 @@
+{
+    "introduction": {
+      "title": "About UPSC Civil Services",
+      "description": "The Civil Services Examination (CSE) is a nationwide competitive examination in India conducted by the Union Public Service Commission (UPSC) for recruitment to various Civil Services of the Government of India.",
+      "careers": [
+        "Indian Administrative Service (IAS)",
+        "Indian Police Service (IPS)",
+        "Indian Foreign Service (IFS)",
+        "Indian Revenue Service (IRS)",
+        "Indian Audit and Accounts Service (IA&AS)",
+        "Indian Corporate Law Service (ICLS)",
+        "Indian Defence Accounts Service (IDAS)",
+        "Indian Information Service (IIS)",
+        "Indian Postal Service (IPoS)",
+        "Indian Railway Traffic Service (IRTS)"
+      ],
+      "examStages": [
+        {
+          "name": "Preliminary Examination",
+          "description": "First stage screening test to select candidates for Main Examination",
+          "nature": "Objective (Multiple Choice Questions)",
+          "qualification": "Marks not counted for final ranking"
+        },
+        {
+          "name": "Main Examination",
+          "description": "Comprehensive written examination to test in-depth knowledge",
+          "nature": "Written (Descriptive Type)",
+          "qualification": "Marks counted for final ranking"
+        },
+        {
+          "name": "Interview",
+          "description": "Personality Test to assess candidate's suitability for civil service",
+          "nature": "Face-to-face interaction with UPSC board",
+          "qualification": "Marks counted for final ranking"
+        }
+      ],
+      "eligibility": {
+        "nationality": "Must be an Indian citizen",
+        "age": {
+          "general": "21-32 years",
+          "obc": "21-35 years",
+          "sc_st": "21-37 years"
+        },
+        "attempts": {
+          "general": 6,
+          "obc": 9,
+          "sc_st": "No limit"
+        },
+        "education": "Bachelor's degree from recognized university"
+      },
+      "importantDates": {
+        "notification": "February",
+        "preliminary": "May-June",
+        "mains": "September",
+        "interview": "March-May (Following Year)"
+      }
+    },
+    "preliminaryExam": {
+      "overview": {
+        "purpose": "Screening test to select candidates for Main Examination",
+        "type": "Objective Multiple Choice Questions",
+        "qualifying": "Must pass both papers to qualify for Mains",
+        "negative_marking": "1/3rd mark deducted for wrong answers"
+      },
+      "paper1": {
+        "name": "General Studies I",
+        "duration": "2 hours",
+        "maxMarks": 200,
+        "topics": [
+          {
+            "id": "p1_1",
+            "name": "Current Events",
+            "description": "Understanding of current events of national and international importance",
+            "subtopics": [
+              "National Current Affairs",
+              "International Relations",
+              "Social Issues",
+              "Economic Developments"
+            ],
+            "preparation_tips": [
+              "Read daily newspapers",
+              "Follow reputed news magazines",
+              "Focus on last 1 year's events",
+              "Understand basic concepts behind news"
+            ]
+          },
+          {
+            "id": "p1_2",
+            "name": "Indian History and Culture",
+            "description": "Understanding of Indian heritage, culture, and freedom movement",
+            "subtopics": [
+              "Ancient India (Prehistoric to 1206 AD)",
+              "Medieval India (1206-1707 AD)",
+              "Modern India (1707-1947 AD)",
+              "Indian Art & Cultural Heritage",
+              "Architecture & Sculptures"
+            ],
+            "preparation_tips": [
+              "Focus on major dynasties and their contributions",
+              "Understand freedom movement chronologically",
+              "Learn about important cultural movements",
+              "Study architectural styles and their evolution"
+            ]
+          },
+          {
+            "id": "p1_3",
+            "name": "Geography",
+            "description": "Understanding of physical, economic, and social geography of India and the World",
+            "subtopics": [
+              "Physical Geography of India",
+              "World Geography",
+              "Economic Geography",
+              "Climate & Natural Resources",
+              "Environmental Geography"
+            ],
+            "preparation_tips": [
+              "Practice with maps regularly",
+              "Understand basic geographical concepts",
+              "Focus on India's geographical features",
+              "Learn about climate patterns and changes"
+            ]
+          },
+          {
+            "id": "p1_4",
+            "name": "Indian Polity",
+            "description": "Understanding of Indian constitutional framework and governance",
+            "subtopics": [
+              "Indian Constitution",
+              "Political System",
+              "Panchayati Raj",
+              "Public Policy",
+              "Rights Issues",
+              "Constitutional Bodies",
+              "Centre-State Relations"
+            ],
+            "preparation_tips": [
+              "Read Constitution thoroughly",
+              "Understand basic structure",
+              "Focus on current constitutional debates",
+              "Learn about major amendments"
+            ]
+          },
+          {
+            "id": "p1_5",
+            "name": "Economic and Social Development",
+            "description": "Understanding of economic and social development in India",
+            "subtopics": [
+              "Economic Planning",
+              "Poverty and Development",
+              "Demographics",
+              "Social Sector Initiatives",
+              "Financial Inclusion",
+              "Sustainable Development"
+            ],
+            "preparation_tips": [
+              "Focus on current economic policies",
+              "Understand basic economic concepts",
+              "Learn about major government schemes",
+              "Study demographic trends"
+            ]
+          },
+          {
+            "id": "p1_6",
+            "name": "Environmental Ecology",
+            "description": "Understanding of environmental issues and biodiversity",
+            "subtopics": [
+              "Biodiversity",
+              "Climate Change",
+              "Environmental Impact Assessment",
+              "Conservation Efforts",
+              "Pollution Control",
+              "Environmental Laws"
+            ],
+            "preparation_tips": [
+              "Understand basic ecological concepts",
+              "Focus on environmental legislation",
+              "Learn about conservation projects",
+              "Study climate change impacts"
+            ]
+          },
+          {
+            "id": "p1_7",
+            "name": "General Science",
+            "description": "Basic understanding of science and technology",
+            "subtopics": [
+              "Physics Concepts",
+              "Chemistry Basics",
+              "Biology Fundamentals",
+              "Scientific Research",
+              "Space Technology",
+              "IT & Communications"
+            ],
+            "preparation_tips": [
+              "Focus on basic scientific concepts",
+              "Learn about recent scientific developments",
+              "Understand technology applications",
+              "Study space achievements"
+            ]
+          }
+        ]
+      },
+      "paper2": {
+        "name": "CSAT (General Studies II)",
+        "duration": "2 hours",
+        "maxMarks": 200,
+        "qualifying_nature": "Qualifying paper with minimum 33% required",
+        "topics": [
+          {
+            "id": "p2_1",
+            "name": "Comprehension",
+            "description": "Testing reading and understanding abilities",
+            "subtopics": [
+              "Reading Comprehension",
+              "Interpersonal Skills",
+              "Communication Skills",
+              "Logical Reasoning",
+              "English Language Comprehension"
+            ],
+            "preparation_tips": [
+              "Practice reading complex passages",
+              "Improve vocabulary",
+              "Work on reading speed",
+              "Learn to identify main ideas"
+            ]
+          },
+          {
+            "id": "p2_2",
+            "name": "Analytical Ability and Problem Solving",
+            "description": "Testing logical thinking and problem-solving skills",
+            "subtopics": [
+              "Decision Making",
+              "Problem Solving",
+              "Data Interpretation",
+              "Basic Numeracy",
+              "General Mental Ability"
+            ],
+            "preparation_tips": [
+              "Practice analytical questions daily",
+              "Improve calculation speed",
+              "Learn data interpretation techniques",
+              "Focus on logical reasoning"
+            ]
+          }
+        ]
+      }
+    },
+    "mainExam": {
+      "overview": {
+        "purpose": "In-depth testing of knowledge and understanding",
+        "nature": "Descriptive type papers",
+        "qualifying_marks": "Minimum marks needed in each paper",
+        "importance": "Marks count for final ranking"
+      },
+      "qualifyingPapers": {
+        "paper1": {
+          "name": "Any Indian Language from 8th Schedule",
+          "duration": "3 hours",
+          "maxMarks": 300,
+          "qualifying_nature": true,
+          "description": "Testing proficiency in chosen Indian language"
+        },
+        "paper2": {
+          "name": "English",
+          "duration": "3 hours",
+          "maxMarks": 300,
+          "qualifying_nature": true,
+          "description": "Testing English language proficiency"
+        }
+      },
+      "rankingPapers": {
+        "paperA": {
+          "name": "Essay",
+          "duration": "3 hours",
+          "maxMarks": 250,
+          "description": "Testing ability to present ideas coherently",
+          "topics": [
+            "Current Affairs",
+            "Social Issues",
+            "Philosophy",
+            "Abstract Topics",
+            "Environmental Issues",
+            "Science & Technology",
+            "Economic Issues"
+          ],
+          "preparation_tips": [
+            "Practice writing essays regularly",
+            "Develop clear writing style",
+            "Build vast knowledge base",
+            "Improve analytical skills"
+          ]
+        },
+        "gs1": {
+          "name": "General Studies I",
+          "duration": "3 hours",
+          "maxMarks": 250,
+          "description": "Indian Heritage, Culture, History and Geography",
+          "topics": [
+            {
+              "id": "m1_1",
+              "name": "Indian Heritage and Culture",
+              "description": "Understanding of Indian cultural heritage",
+              "subtopics": [
+                "Art Forms",
+                "Architecture",
+                "Literature",
+                "Historical Movements",
+                "Religious & Philosophical Thought"
+              ]
+            },
+            {
+              "id": "m1_2",
+              "name": "Modern Indian History",
+              "description": "Understanding of modern Indian history",
+              "subtopics": [
+                "Freedom Struggle",
+                "Post Independence",
+                "Socio-economic Development",
+                "Integration of States",
+                "Political Developments"
+              ]
+            },
+            {
+              "id": "m1_3",
+              "name": "World History",
+              "description": "Understanding of major world events",
+              "subtopics": [
+                "Industrial Revolution",
+                "World Wars",
+                "Cold War",
+                "Colonization",
+                "Decolonization",
+                "Political Philosophies"
+              ]
+            }
+          ]
+        },
+        "gs2": {
+          "name": "General Studies II",
+          "duration": "3 hours",
+          "maxMarks": 250,
+          "description": "Governance, Constitution, and International Relations",
+          "topics": [
+            {
+              "id": "m2_1",
+              "name": "Governance",
+              "description": "Understanding of Indian governance structure",
+              "subtopics": [
+                "Constitution",
+                "Executive",
+                "Judiciary",
+                "Local Government",
+                "Statutory Bodies",
+                "NGOs"
+              ]
+            },
+            {
+              "id": "m2_2",
+              "name": "Social Justice",
+              "description": "Understanding of social issues and justice",
+              "subtopics": [
+                "Health",
+                "Education",
+                "Human Resources",
+                "Poverty",
+                "Inclusion",
+                "Vulnerability"
+              ]
+            },
+            {
+              "id": "m2_3",
+              "name": "International Relations",
+              "description": "Understanding of international affairs",
+              "subtopics": [
+                "Foreign Policy",
+                "International Organizations",
+                "Regional Groupings",
+                "Bilateral Relations",
+                "Global Issues"
+              ]
+            }
+          ]
+        },
+        "gs3": {
+          "name": "General Studies III",
+          "duration": "3 hours",
+          "maxMarks": 250,
+          "description": "Technology, Economic Development, Agriculture, and Security",
+          "topics": [
+            {
+              "id": "m3_1",
+              "name": "Economic Development",
+              "description": "Understanding of Indian economy",
+              "subtopics": [
+                "Planning",
+                "Resources",
+                "Infrastructure",
+                "Land Reforms",
+                "Industry",
+                "Agriculture"
+              ]
+            },
+            {
+              "id": "m3_2",
+              "name": "Security",
+              "description": "Understanding of security challenges",
+              "subtopics": [
+                "Internal Security",
+                "Border Management",
+                "Cyber Security",
+                "Money Laundering",
+                "Terrorism",
+                "Disaster Management"
+              ]
+            }
+          ]
+        },
+        "gs4": {
+          "name": "General Studies IV",
+          "duration": "3 hours",
+          "maxMarks": 250,
+          "description": "Ethics, Integrity, and Aptitude",
+          "topics": [
+            {
+              "id": "m4_1",
+              "name": "Ethics",
+              "description": "Understanding of ethical concepts",
+              "subtopics": [
+                "Ethics in Public Service",
+                "Emotional Intelligence",
+                "Case Studies",
+                "Attitude",
+                "Moral Thinkers",
+                "Administrative Ethics"
+              ]
+            },
+            {
+              "id": "m4_2",
+              "name": "Integrity",
+              "description": "Understanding of integrity in public service",
+              "subtopics": [
+                "Aptitude",
+                "Foundational Values",
+                "Moral Thinkers",
+                "Public Service Code",
+                "Corruption",
+                "Civil Service Values"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "interview": {
+      "maxMarks": 275,
+      "description": "Personality Test to assess suitability for civil service",
+      "purpose": "To assess the candidate's suitability for a career in civil services",
+      "aspects": [
+        "Personality Test",
+        "Leadership Qualities",
+        "Mental Alertness",
+        "Critical Powers of Assimilation",
+        "Clear and Logical Exposition",
+        "Balance of Judgement",
+        "Variety and Depth of Interest",
+        "Ability for Social Cohesion",
+        "Intellectual and Moral Integrity"
+      ],
+      "preparation_tips": [
+        "Stay updated with current affairs",
+        "Practice mock interviews",
+        "Develop good communication skills",
+        "Be honest and authentic",
+        "Read about your state/region",
+        "Prepare your DAF thoroughly"
+      ]
+    },
+    "preparation_resources": {
+      "books": [
+        "NCERT Books (6th to 12th standard)",
+        "Indian Polity by M Laxmikanth",
+        "Indian Economy by Ramesh Singh",
+        "India's Ancient Past by RS Sharma",
+        "India's Struggle for Independence by Bipan Chandra"
+      ],
+      "newspapers": [
+        "The Hindu",
+        "Indian Express",
+        "Economic Times",
+        "PIB Updates"
+      ],
+      "magazines": [
+        "Yojana",
+        "Kurukshetra",
+        "Down to Earth",
+        "EPW"
+      ],
+      "websites": [
+        "UPSC Official Website",
+        "PIB Website",
+        "PRS India",
+        "Government Schemes Portal"
+      ]
+    }
+  }
