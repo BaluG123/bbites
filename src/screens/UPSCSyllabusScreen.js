@@ -121,6 +121,99 @@ const UPSCSyllabusScreen = () => {
           </View>
         ))}
       </View>
+      {/* <View>
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Eligibility</Text>
+        <View>
+          <Text>
+            Nationality: {syllabus.introduction.eligibility.nationality}
+          </Text>
+          <Text>Age:</Text>
+          <View>
+            <Text>
+              General: {syllabus.introduction.eligibility.age.general}
+            </Text>
+            <Text>OBC: {syllabus.introduction.eligibility.age.obc}</Text>
+            <Text>SC/ST: {syllabus.introduction.eligibility.age.sc_st}</Text>
+          </View>
+          <Text>Attempts:</Text>
+          <View>
+            <Text>
+              General: {syllabus.introduction.eligibility.attempts.general}
+            </Text>
+            <Text>OBC: {syllabus.introduction.eligibility.attempts.obc}</Text>
+            <Text>
+              SC/ST: {syllabus.introduction.eligibility.attempts.sc_st}
+            </Text>
+          </View>
+          <Text>Education: {syllabus.introduction.eligibility.education}</Text>
+        </View>
+
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Important Dates</Text>
+        <View>
+          <Text>
+            Notification: {syllabus.introduction.importantDates.notification}
+          </Text>
+          <Text>
+            Preliminary Exam: {syllabus.introduction.importantDates.preliminary}
+          </Text>
+          <Text>Mains Exam: {syllabus.introduction.importantDates.mains}</Text>
+          <Text>
+            Interview: {syllabus.introduction.importantDates.interview}
+          </Text>
+        </View>
+      </View> */}
+
+      <View>
+        <Text style={styles.sectionTitle}>Eligibility</Text>
+        <View style={styles.eligibilityContainer}>
+          <Text style={styles.eligibilityText}>
+            Nationality: {syllabus.introduction.eligibility.nationality}
+          </Text>
+          <Text style={styles.sectionTitle}>Age</Text>
+          <View>
+            <Text style={styles.eligibilityText}>
+              General: {syllabus.introduction.eligibility.age.general}
+            </Text>
+            <Text style={styles.eligibilityText}>
+              OBC: {syllabus.introduction.eligibility.age.obc}
+            </Text>
+            <Text style={styles.eligibilityText}>
+              SC/ST: {syllabus.introduction.eligibility.age.sc_st}
+            </Text>
+          </View>
+          <Text style={styles.sectionTitle}>Attempts</Text>
+          <View>
+            <Text style={styles.eligibilityText}>
+              General: {syllabus.introduction.eligibility.attempts.general}
+            </Text>
+            <Text style={styles.eligibilityText}>
+              OBC: {syllabus.introduction.eligibility.attempts.obc}
+            </Text>
+            <Text style={styles.eligibilityText}>
+              SC/ST: {syllabus.introduction.eligibility.attempts.sc_st}
+            </Text>
+          </View>
+          <Text style={styles.eligibilityText}>
+            Education: {syllabus.introduction.eligibility.education}
+          </Text>
+        </View>
+
+        <Text style={styles.sectionTitle}>Important Dates</Text>
+        <View style={styles.importantDatesContainer}>
+          <Text style={styles.importantDatesText}>
+            Notification: {syllabus.introduction.importantDates.notification}
+          </Text>
+          <Text style={styles.importantDatesText}>
+            Preliminary Exam: {syllabus.introduction.importantDates.preliminary}
+          </Text>
+          <Text style={styles.importantDatesText}>
+            Mains Exam: {syllabus.introduction.importantDates.mains}
+          </Text>
+          <Text style={styles.importantDatesText}>
+            Interview: {syllabus.introduction.importantDates.interview}
+          </Text>
+        </View>
+      </View>
     </View>
   );
 
@@ -423,6 +516,52 @@ const styles = StyleSheet.create({
   overviewContainer: {
     padding: wp('5%'),
     paddingTop: hp('1%'), // Reduced top padding
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: hp('1%'),
+    color: 'black',
+  },
+  eligibilityContainer: {
+    marginBottom: hp('2%'),
+  },
+  importantDatesContainer: {
+    marginBottom: hp('2%'),
+  },
+  eligibilityText: {
+    backgroundColor: '#fff',
+    padding: wp('3%'),
+    borderRadius: wp('2%'),
+    fontSize: wp('3.5%'),
+    color: '#444',
+    textAlign: 'left',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    marginBottom: hp('1%'),
+  },
+  importantDatesText: {
+    backgroundColor: '#fff',
+    padding: wp('3%'),
+    borderRadius: wp('2%'),
+    fontSize: wp('3.5%'),
+    color: '#444',
+    textAlign: 'left',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    marginBottom: hp('1%'),
   },
 });
 export default UPSCSyllabusScreen;
