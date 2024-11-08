@@ -13,9 +13,7 @@ const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image
-        source={{
-          uri: 'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-169994-674010.jpg&fm=jpg',
-        }} // You'll need to add your splash image
+        source={require('../utils/logo_upsc.png')}
         style={styles.image}
         resizeMode="contain"
       />

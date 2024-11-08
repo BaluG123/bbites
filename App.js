@@ -47,7 +47,7 @@ export default function App() {
           initialRouteName="Splash"
           screenOptions={{
             headerStyle: {
-              backgroundColor: '#f4511e',
+              backgroundColor: '#1a237e',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -59,28 +59,67 @@ export default function App() {
             component={SplashScreen}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Chapters" component={ChaptersScreen} />
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Chapters"
+            component={ChaptersScreen}
+            options={{title: 'Chapters Overview'}}
+          />
           <Stack.Screen name="Subjects" component={SubjectsScreen} />
           <Stack.Screen
             name="MainsPrelimsQuestions"
             component={MainsPrelimsQuestions}
+            options={{title: 'Mains & Prelims Questions'}}
           />
           <Stack.Screen
             name="UPSCSyllabusScreen"
             component={UPSCSyllabusScreen}
+            options={{title: 'UPSC Syllabus'}}
           />
-          <Stack.Screen name="CurrentAffairs" component={Currentaffairs} />
+          <Stack.Screen
+            name="CurrentAffairs"
+            component={Currentaffairs}
+            options={{title: 'Current Affairs'}}
+          />
           <Stack.Screen
             name="PreviousYearPapers"
             component={PreviousYearPapers}
+            options={{title: 'Previous Year Papers'}}
           />
-          <Stack.Screen name="DailyQuiz" component={DailyQuiz} />
-          <Stack.Screen name="AnswerWriting" component={AnswerWriting} />
-          <Stack.Screen name="OptionalSubjects" component={OptionalSubjects} />
-          <Stack.Screen name="StudyPlans" component={StudyPlans} />
-          <Stack.Screen name="NewsAnalysis" component={NewsAnalysis} />
-          <Stack.Screen name="MockTests" component={MockTests} />
+          <Stack.Screen
+            name="DailyQuiz"
+            component={DailyQuiz}
+            options={{title: 'Daily Quiz'}}
+          />
+          <Stack.Screen
+            name="AnswerWriting"
+            component={AnswerWriting}
+            options={{title: 'Answer Writing Practice'}}
+          />
+          <Stack.Screen
+            name="OptionalSubjects"
+            component={OptionalSubjects}
+            options={{title: 'Optional Subjects'}}
+          />
+          <Stack.Screen
+            name="StudyPlans"
+            component={StudyPlans}
+            options={{title: 'Study Plans'}}
+          />
+          <Stack.Screen
+            name="NewsAnalysis"
+            component={NewsAnalysis}
+            options={{title: 'News Analysis'}}
+          />
+          <Stack.Screen
+            name="MockTests"
+            component={MockTests}
+            options={{title: 'Mock Tests'}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
