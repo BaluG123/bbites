@@ -98,10 +98,10 @@ android {
         applicationId "com.brainbites"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
-        versionName "2.0"
+        versionCode 2024
+        versionName "20.0"
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdkVersion 34
     }
 
     splits {
