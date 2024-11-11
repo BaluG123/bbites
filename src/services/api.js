@@ -1,45 +1,9 @@
-// import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-
-// export const api = createApi({
-//   reducerPath: 'api',
-//   baseQuery: fetchBaseQuery({
-//     baseUrl: 'http://smartupsc.pythonanywhere.com/api',
-//   }),
-//   endpoints: builder => ({
-//     getPrelimsByFilter: builder.query({
-//       query: ({subject, classNumber}) => ({
-//         url: `/questions/prelims/filter/`,
-//         params: {
-//           subject,
-//           class_number: classNumber,
-//         },
-//       }),
-//       transformResponse: response => response,
-//       providesTags: ['Prelims'],
-//     }),
-
-//     getMainsByFilter: builder.query({
-//       query: ({subject, classNumber}) => ({
-//         url: `/questions/mains/filter/`,
-//         params: {
-//           subject,
-//           class_number: classNumber,
-//         },
-//       }),
-//       transformResponse: response => response,
-//       providesTags: ['Mains'],
-//     }),
-//   }),
-// });
-
-// export const {useGetPrelimsByFilterQuery, useGetMainsByFilterQuery} = api;
-
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://smartupsc.pythonanywhere.com/api',
+    baseUrl: 'https://smartupsc.pythonanywhere.com/api',
   }),
   endpoints: builder => ({
     getPrelimsByFilter: builder.query({
@@ -61,7 +25,17 @@ export const api = createApi({
         },
       }),
     }),
+
+    getChapters: builder.query({
+      query: () => ({
+        url: '/chapters/',
+      }),
+    }),
   }),
 });
 
-export const {useGetPrelimsByFilterQuery, useGetMainsByFilterQuery} = api;
+export const {
+  useGetPrelimsByFilterQuery,
+  useGetMainsByFilterQuery,
+  useGetChaptersQuery,
+} = api;

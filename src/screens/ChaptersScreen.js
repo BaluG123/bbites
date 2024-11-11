@@ -8,15 +8,55 @@
 //   TouchableOpacity,
 //   TextInput,
 //   RefreshControl,
-//   Platform,
 //   ScrollView,
 // } from 'react-native';
 // import {
 //   widthPercentageToDP as wp,
 //   heightPercentageToDP as hp,
 // } from 'react-native-responsive-screen';
-// import {getChapters} from '../api/client';
+// import {useGetChaptersQuery} from '../services/api'; // Update the import path as needed
 
+// // SubjectTag component remains the same
+// const SubjectTag = ({subject}) => {
+//   const subjectColors = {
+//     history: {
+//       bg: '#ffebee',
+//       text: '#c62828',
+//     },
+//     geography: {
+//       bg: '#e8f5e9',
+//       text: '#2e7d32',
+//     },
+//     economics: {
+//       bg: '#fff3e0',
+//       text: '#e65100',
+//     },
+//     science: {
+//       bg: '#e3f2fd',
+//       text: '#1565c0',
+//     },
+//     polity: {
+//       bg: '#f3e5f5',
+//       text: '#7b1fa2',
+//     },
+//     default: {
+//       bg: '#f5f5f5',
+//       text: '#424242',
+//     },
+//   };
+
+//   const colors = subjectColors[subject.toLowerCase()] || subjectColors.default;
+
+//   return (
+//     <View style={[styles.subjectTag, {backgroundColor: colors.bg}]}>
+//       <Text style={[styles.subjectTagText, {color: colors.text}]}>
+//         {subject}
+//       </Text>
+//     </View>
+//   );
+// };
+
+// // ClassFilterButton component remains the same
 // const ClassFilterButton = ({classNumber, isSelected, onPress}) => (
 //   <TouchableOpacity
 //     style={[styles.filterButton, isSelected && styles.filterButtonActive]}
@@ -31,19 +71,20 @@
 //   </TouchableOpacity>
 // );
 
-// const SubjectTag = ({subject}) => (
-//   <View style={[styles.subjectTag, styles[`${subject.toLowerCase()}Tag`]]}>
-//     <Text style={styles.subjectTagText}>{subject}</Text>
-//   </View>
-// );
-
+// // ChapterCard component remains the same
 // const ChapterCard = ({item, onPress}) => (
 //   <TouchableOpacity style={styles.chapterCard} onPress={onPress}>
 //     <View style={styles.chapterHeader}>
-//       <SubjectTag subject={item.subject} />
-//       <Text style={styles.classNumber}>Class {item.class_number}</Text>
+//       <View style={styles.subjectContainer}>
+//         <SubjectTag subject={item.subject} />
+//       </View>
+//       <View style={styles.classNumberContainer}>
+//         <Text style={styles.classNumber}>Class {item.class_number}</Text>
+//       </View>
 //     </View>
-//     <Text style={styles.chapterName}>{item.name}</Text>
+//     <Text style={styles.chapterName} numberOfLines={2}>
+//       {item.name}
+//     </Text>
 //     <View style={styles.chapterFooter}>
 //       <Text style={styles.chapterStats}>
 //         Questions: {item.question_counts.prelims || 0}
@@ -54,40 +95,23 @@
 // );
 
 // const ChaptersScreen = ({navigation}) => {
-//   const [chapters, setChapters] = useState([]);
 //   const [filteredChapters, setFilteredChapters] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [refreshing, setRefreshing] = useState(false);
 //   const [searchQuery, setSearchQuery] = useState('');
 //   const [selectedClass, setSelectedClass] = useState(null);
-//   const [selectedSubject, setSelectedSubject] = useState(null);
 
-//   useEffect(() => {
-//     fetchChapters();
-//   }, []);
+//   // Using RTK Query hook
+//   const {
+//     data: chapters = [],
+//     isLoading,
+//     isFetching,
+//     isError,
+//     refetch,
+//   } = useGetChaptersQuery();
 
+//   // Filter chapters when search query, selected class, or chapters change
 //   useEffect(() => {
 //     filterChapters();
-//   }, [searchQuery, selectedClass, selectedSubject, chapters]);
-
-//   const fetchChapters = async () => {
-//     try {
-//       setLoading(true);
-//       const response = await getChapters();
-//       setChapters(response.data);
-//     } catch (err) {
-//       setError('Failed to fetch chapters');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const onRefresh = async () => {
-//     setRefreshing(true);
-//     await fetchChapters();
-//     setRefreshing(false);
-//   };
+//   }, [searchQuery, selectedClass, chapters]);
 
 //   const filterChapters = () => {
 //     let filtered = [...chapters];
@@ -106,24 +130,14 @@
 //       );
 //     }
 
-//     if (selectedSubject) {
-//       filtered = filtered.filter(
-//         chapter => chapter.subject === selectedSubject,
-//       );
-//     }
-
 //     setFilteredChapters(filtered);
-//   };
-
-//   const getUniqueSubjects = () => {
-//     return [...new Set(chapters.map(chapter => chapter.subject))];
 //   };
 
 //   const getUniqueClasses = () => {
 //     return [...new Set(chapters.map(chapter => chapter.class_number))].sort();
 //   };
 
-//   if (loading) {
+//   if (isLoading) {
 //     return (
 //       <View style={styles.centered}>
 //         <ActivityIndicator size="large" color="#1a237e" />
@@ -131,11 +145,11 @@
 //     );
 //   }
 
-//   if (error) {
+//   if (isError) {
 //     return (
 //       <View style={styles.centered}>
-//         <Text style={styles.error}>{error}</Text>
-//         <TouchableOpacity style={styles.retryButton} onPress={fetchChapters}>
+//         <Text style={styles.error}>Failed to fetch chapters</Text>
+//         <TouchableOpacity style={styles.retryButton} onPress={refetch}>
 //           <Text style={styles.retryButtonText}>Retry</Text>
 //         </TouchableOpacity>
 //       </View>
@@ -149,7 +163,7 @@
 //         <TextInput
 //           style={styles.searchInput}
 //           placeholder="Search chapters..."
-//           placeholderTextColor={'black'}
+//           placeholderTextColor="#666"
 //           value={searchQuery}
 //           onChangeText={setSearchQuery}
 //         />
@@ -200,8 +214,8 @@
 //         )}
 //         refreshControl={
 //           <RefreshControl
-//             refreshing={refreshing}
-//             onRefresh={onRefresh}
+//             refreshing={isFetching}
+//             onRefresh={refetch}
 //             colors={['#1a237e']}
 //           />
 //         }
@@ -239,6 +253,7 @@
 //     padding: wp('3%'),
 //     fontSize: wp('4%'),
 //     marginTop: hp('1%'),
+//     color: '#000',
 //   },
 //   filtersContainer: {
 //     padding: wp('2%'),
@@ -280,13 +295,22 @@
 //     justifyContent: 'space-between',
 //     alignItems: 'center',
 //     marginBottom: hp('1%'),
-//     width: wp('80%'),
+//     width: '100%',
+//   },
+//   subjectContainer: {
+//     flex: 3,
+//     marginRight: wp('2%'),
+//   },
+//   classNumberContainer: {
+//     flex: 1,
+//     alignItems: 'flex-end',
 //   },
 //   chapterName: {
 //     fontSize: wp('4.5%'),
 //     fontWeight: '600',
 //     color: '#000',
 //     marginBottom: hp('1%'),
+//     lineHeight: wp('6%'),
 //   },
 //   chapterFooter: {
 //     flexDirection: 'row',
@@ -301,19 +325,7 @@
 //     paddingHorizontal: wp('2%'),
 //     paddingVertical: hp('0.5%'),
 //     borderRadius: wp('2%'),
-//     backfaceVisibility: 'visible',
-//   },
-//   historyTag: {
-//     backgroundColor: '#ffebee',
-//   },
-//   geographyTag: {
-//     backgroundColor: '#e8f5e9',
-//   },
-//   economicsTag: {
-//     backgroundColor: '#fff3e0',
-//   },
-//   scienceTag: {
-//     backgroundColor: '#e3f2fd',
+//     alignSelf: 'flex-start',
 //   },
 //   subjectTagText: {
 //     fontSize: wp('3%'),
@@ -321,7 +333,8 @@
 //   },
 //   classNumber: {
 //     fontSize: wp('3.5%'),
-//     color: '#666',
+//     color: '#424242',
+//     fontWeight: '500',
 //   },
 //   listContainer: {
 //     padding: wp('4%'),
@@ -351,7 +364,7 @@
 
 // export default ChaptersScreen;
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {
   View,
   Text,
@@ -367,35 +380,16 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {getChapters} from '../api/client';
+import {useGetChaptersQuery} from '../services/api';
 
-// Updated SubjectTag component with better color handling
 const SubjectTag = ({subject}) => {
   const subjectColors = {
-    history: {
-      bg: '#ffebee',
-      text: '#c62828',
-    },
-    geography: {
-      bg: '#e8f5e9',
-      text: '#2e7d32',
-    },
-    economics: {
-      bg: '#fff3e0',
-      text: '#e65100',
-    },
-    science: {
-      bg: '#e3f2fd',
-      text: '#1565c0',
-    },
-    polity: {
-      bg: '#f3e5f5',
-      text: '#7b1fa2',
-    },
-    default: {
-      bg: '#f5f5f5',
-      text: '#424242',
-    },
+    history: {bg: '#ffebee', text: '#c62828'},
+    geography: {bg: '#e8f5e9', text: '#2e7d32'},
+    economics: {bg: '#fff3e0', text: '#e65100'},
+    science: {bg: '#e3f2fd', text: '#1565c0'},
+    polity: {bg: '#f3e5f5', text: '#7b1fa2'},
+    default: {bg: '#f5f5f5', text: '#424242'},
   };
 
   const colors = subjectColors[subject.toLowerCase()] || subjectColors.default;
@@ -409,7 +403,6 @@ const SubjectTag = ({subject}) => {
   );
 };
 
-// Class filter button component
 const ClassFilterButton = ({classNumber, isSelected, onPress}) => (
   <TouchableOpacity
     style={[styles.filterButton, isSelected && styles.filterButtonActive]}
@@ -424,7 +417,6 @@ const ClassFilterButton = ({classNumber, isSelected, onPress}) => (
   </TouchableOpacity>
 );
 
-// Updated ChapterCard component
 const ChapterCard = ({item, onPress}) => (
   <TouchableOpacity style={styles.chapterCard} onPress={onPress}>
     <View style={styles.chapterHeader}>
@@ -448,42 +440,20 @@ const ChapterCard = ({item, onPress}) => (
 );
 
 const ChaptersScreen = ({navigation}) => {
-  const [chapters, setChapters] = useState([]);
-  const [filteredChapters, setFilteredChapters] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedClass, setSelectedClass] = useState(null);
 
-  useEffect(() => {
-    fetchChapters();
-  }, []);
+  // Using RTK Query hook
+  const {
+    data: chapters = [],
+    isLoading,
+    isFetching,
+    isError,
+    refetch,
+  } = useGetChaptersQuery();
 
-  useEffect(() => {
-    filterChapters();
-  }, [searchQuery, selectedClass, chapters]);
-
-  const fetchChapters = async () => {
-    try {
-      setLoading(true);
-      const response = await getChapters();
-      setChapters(response.data);
-      setFilteredChapters(response.data);
-    } catch (err) {
-      setError('Failed to fetch chapters');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const onRefresh = async () => {
-    setRefreshing(true);
-    await fetchChapters();
-    setRefreshing(false);
-  };
-
-  const filterChapters = () => {
+  // Memoize filtered chapters
+  const filteredChapters = useMemo(() => {
     let filtered = [...chapters];
 
     if (searchQuery) {
@@ -500,14 +470,14 @@ const ChaptersScreen = ({navigation}) => {
       );
     }
 
-    setFilteredChapters(filtered);
-  };
+    return filtered;
+  }, [searchQuery, selectedClass, chapters]);
 
   const getUniqueClasses = () => {
     return [...new Set(chapters.map(chapter => chapter.class_number))].sort();
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
       <View style={styles.centered}>
         <ActivityIndicator size="large" color="#1a237e" />
@@ -515,11 +485,11 @@ const ChaptersScreen = ({navigation}) => {
     );
   }
 
-  if (error) {
+  if (isError) {
     return (
       <View style={styles.centered}>
-        <Text style={styles.error}>{error}</Text>
-        <TouchableOpacity style={styles.retryButton} onPress={fetchChapters}>
+        <Text style={styles.error}>Failed to fetch chapters</Text>
+        <TouchableOpacity style={styles.retryButton} onPress={refetch}>
           <Text style={styles.retryButtonText}>Retry</Text>
         </TouchableOpacity>
       </View>
@@ -584,8 +554,8 @@ const ChaptersScreen = ({navigation}) => {
         )}
         refreshControl={
           <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
+            refreshing={isFetching}
+            onRefresh={refetch}
             colors={['#1a237e']}
           />
         }
@@ -595,6 +565,83 @@ const ChaptersScreen = ({navigation}) => {
   );
 };
 
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#f5f5f5',
+//   },
+//   header: {
+//     backgroundColor: '#fff',
+//     padding: wp('4%'),
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#eee',
+//     shadowColor: '#000',
+//     shadowOffset: {width: 0, height: 2},
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//   },
+//   headerTitle: {
+//     fontSize: wp('6%'),
+//     fontWeight: 'bold',
+//     color: '#1a237e',
+//     marginBottom: hp('1%'),
+//   },
+//   searchInput: {
+//     backgroundColor: '#f5f5f5',
+//     borderRadius: wp('2%'),
+//     padding: wp('3%'),
+//     fontSize: wp('4%'),
+//     marginTop: hp('1%'),
+//     color: '#000',
+//   },
+//   filtersContainer: {
+//     padding: wp('2%'),
+//     backgroundColor: '#fff',
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#eee',
+//   },
+//   filterButton: {
+//     paddingHorizontal: wp('4%'),
+//     paddingVertical: hp('1%'),
+//     borderRadius: wp('4%'),
+//     marginRight: wp('2%'),
+//     backgroundColor: '#f5f5f5',
+//   },
+//   filterButtonActive: {
+//     backgroundColor: '#1a237e',
+//   },
+//   filterButtonText: {
+//     color: '#666',
+//     fontSize: wp('4%'),
+//   },
+//   filterButtonTextActive: {
+//     color: '#fff',
+//   },
+//   listContainer: {
+//     paddingBottom: hp('2%'),
+//   },
+//   centered: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   error: {
+//     color: 'red',
+//     fontSize: wp('4%'),
+//     marginBottom: hp('2%'),
+//   },
+//   retryButton: {
+//     backgroundColor: '#1a237e',
+//     paddingVertical: hp('1%'),
+//     paddingHorizontal: wp('4%'),
+//     borderRadius: wp('2%'),
+//   },
+//   retryButtonText: {
+//     color: '#fff',
+//     fontSize: wp('4%'),
+//   },
+// });
 const styles = StyleSheet.create({
   container: {
     flex: 1,
