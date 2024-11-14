@@ -1,75 +1,73 @@
 // import React from 'react';
-// import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
+// import {
+//   View,
+//   Text,
+//   TouchableOpacity,
+//   StyleSheet,
+//   FlatList,
+//   Alert,
+// } from 'react-native';
+// import RNFS from 'react-native-fs';
 
-// const pdfData = {
-//   2014: {
-//     paper1: require('../assets/pdf/2014/paper1.pdf'),
-//     paper2: require('../assets/pdf/2014/paper2.pdf'),
-//   },
-//   2015: {
-//     paper1: require('../assets/pdf/2015/paper1.pdf'),
-//     paper2: require('../assets/pdf/2015/paper2.pdf'),
-//   },
-//   2016: {
-//     paper1: require('../assets/pdf/2016/paper1.pdf'),
-//     paper2: require('../assets/pdf/2016/paper2.pdf'),
-//   },
-//   2017: {
-//     paper1: require('../assets/pdf/2017/paper1.pdf'),
-//     paper2: require('../assets/pdf/2017/paper2.pdf'),
-//   },
-//   2018: {
-//     paper1: require('../assets/pdf/2018/paper1.pdf'),
-//     paper2: require('../assets/pdf/2018/paper2.pdf'),
-//   },
-//   2019: {
-//     paper1: require('../assets/pdf/2019/paper1.pdf'),
-//     paper2: require('../assets/pdf/2019/paper2.pdf'),
-//   },
-//   2020: {
-//     paper1: require('../assets/pdf/2020/paper1.pdf'),
-//     paper2: require('../assets/pdf/2020/paper2.pdf'),
-//   },
-//   2021: {
-//     paper1: require('../assets/pdf/2021/paper1.pdf'),
-//     paper2: require('../assets/pdf/2021/paper2.pdf'),
-//   },
-//   2022: {
-//     paper1: require('../assets/pdf/2022/paper1.pdf'),
-//     paper2: require('../assets/pdf/2022/paper2.pdf'),
-//   },
-//   2023: {
-//     paper1: require('../assets/pdf/2023/paper1.pdf'),
-//     paper2: require('../assets/pdf/2023/paper2.pdf'),
-//   },
-//   2024: {
-//     paper1: require('../assets/pdf/2024/paper1.pdf'),
-//     paper2: require('../assets/pdf/2024/paper2.pdf'),
-//   },
-// };
+// const years = [
+//   '2014',
+//   '2015',
+//   '2016',
+//   '2017',
+//   '2018',
+//   '2019',
+//   '2020',
+//   '2021',
+//   '2022',
+//   '2023',
+//   '2024',
+// ];
 
 // const PDFListScreen = ({navigation}) => {
+//   const getPdfPath = (year, paperNumber) => {
+//     return `file:///android_asset/pdf/${year}/paper${paperNumber}.pdf`;
+//   };
+
+//   const checkFileExists = async path => {
+//     try {
+//       const exists = await RNFS.exists(path);
+//       if (!exists) {
+//         Alert.alert('File not found', `The file at ${path} does not exist.`);
+//       }
+//       return exists;
+//     } catch (error) {
+//       console.error('Error checking file existence:', error);
+//       return false;
+//     }
+//   };
+
 //   const renderItem = ({item: year}) => (
 //     <View style={styles.yearContainer}>
 //       <Text style={styles.yearText}>{year}</Text>
 //       <TouchableOpacity
 //         style={styles.paperButton}
-//         onPress={() =>
-//           navigation.navigate('PDFViewerScreen', {
-//             uri: pdfData[year].paper1,
-//             title: `${year} - Paper 1`,
-//           })
-//         }>
+//         onPress={async () => {
+//           const path = getPdfPath(year, 1);
+//           if (await checkFileExists(path)) {
+//             navigation.navigate('PDFViewerScreen', {
+//               source: {uri: path},
+//               title: `${year} - Paper 1`,
+//             });
+//           }
+//         }}>
 //         <Text style={styles.paperText}>Paper 1</Text>
 //       </TouchableOpacity>
 //       <TouchableOpacity
 //         style={styles.paperButton}
-//         onPress={() =>
-//           navigation.navigate('PDFViewer', {
-//             uri: pdfData[year].paper2,
-//             title: `${year} - Paper 2`,
-//           })
-//         }>
+//         onPress={async () => {
+//           const path = getPdfPath(year, 2);
+//           if (await checkFileExists(path)) {
+//             navigation.navigate('PDFViewerScreen', {
+//               source: {uri: path},
+//               title: `${year} - Paper 2`,
+//             });
+//           }
+//         }}>
 //         <Text style={styles.paperText}>Paper 2</Text>
 //       </TouchableOpacity>
 //     </View>
@@ -77,199 +75,53 @@
 
 //   return (
 //     <FlatList
-//       data={Object.keys(pdfData)}
+//       data={years}
 //       renderItem={renderItem}
 //       keyExtractor={item => item}
 //       contentContainerStyle={styles.container}
 //     />
 //   );
-// };
 
-// const styles = StyleSheet.create({
-//   container: {padding: 20},
-//   yearContainer: {marginBottom: 20},
-//   yearText: {fontSize: 20, fontWeight: 'bold', marginBottom: 10},
-//   paperButton: {
-//     padding: 10,
-//     backgroundColor: '#4caf50',
-//     borderRadius: 5,
-//     marginTop: 5,
-//   },
-//   paperText: {color: 'white', textAlign: 'center'},
-// });
+//   // const getPdfPath = (year, paperNumber) => {
+//   //   const path = `asset:///pdf/${year}/paper${paperNumber}.pdf`;
+//   //   console.log('PDF Path:', path);
+//   //   return path;
+//   // };
 
-// export default PDFListScreen;
+//   // const renderItem = ({item: year}) => (
+//   //   <View style={styles.yearContainer}>
+//   //     <Text style={styles.yearText}>{year}</Text>
+//   //     <TouchableOpacity
+//   //       style={styles.paperButton}
+//   //       onPress={() =>
+//   //         navigation.navigate('PDFViewerScreen', {
+//   //           source: {uri: getPdfPath(year, 1)},
+//   //           title: `${year} - Paper 1`,
+//   //         })
+//   //       }>
+//   //       <Text style={styles.paperText}>Paper 1</Text>
+//   //     </TouchableOpacity>
+//   //     <TouchableOpacity
+//   //       style={styles.paperButton}
+//   //       onPress={() =>
+//   //         navigation.navigate('PDFViewerScreen', {
+//   //           source: {uri: getPdfPath(year, 2)},
+//   //           title: `${year} - Paper 2`,
+//   //         })
+//   //       }>
+//   //       <Text style={styles.paperText}>Paper 2</Text>
+//   //     </TouchableOpacity>
+//   //   </View>
+//   // );
 
-// import React from 'react';
-// import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
-
-// // const pdfData = {
-// //   2014: {
-// //     paper1: require('../assets/pdf/2014/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2014/paper2.pdf'),
-// //   },
-// //   2015: {
-// //     paper1: require('../assets/pdf/2015/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2015/paper2.pdf'),
-// //   },
-// //   2016: {
-// //     paper1: require('../assets/pdf/2016/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2016/paper2.pdf'),
-// //   },
-// //   2017: {
-// //     paper1: require('../assets/pdf/2017/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2017/paper2.pdf'),
-// //   },
-// //   2018: {
-// //     paper1: require('../assets/pdf/2018/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2018/paper2.pdf'),
-// //   },
-// //   2019: {
-// //     paper1: require('../assets/pdf/2019/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2019/paper2.pdf'),
-// //   },
-// //   2020: {
-// //     paper1: require('../assets/pdf/2020/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2020/paper2.pdf'),
-// //   },
-// //   2021: {
-// //     paper1: require('../assets/pdf/2021/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2021/paper2.pdf'),
-// //   },
-// //   2022: {
-// //     paper1: require('../assets/pdf/2022/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2022/paper2.pdf'),
-// //   },
-// //   2023: {
-// //     paper1: require('../assets/pdf/2023/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2023/paper2.pdf'),
-// //   },
-// //   2024: {
-// //     paper1: require('../assets/pdf/2024/paper1.pdf'),
-// //     paper2: require('../assets/pdf/2024/paper2.pdf'),
-// //   },
-// // };
-
-// // const PDFListScreen = ({navigation}) => {
-// //   const renderItem = ({item: year}) => (
-// //     <View style={styles.yearContainer}>
-// //       <Text style={styles.yearText}>{year}</Text>
-// //       <TouchableOpacity
-// //         style={styles.paperButton}
-// //         onPress={() =>
-// //           navigation.navigate('PDFViewerScreen', {
-// //             source: pdfData[year].paper1, // Changed from uri to source
-// //             title: `${year} - Paper 1`,
-// //           })
-// //         }>
-// //         <Text style={styles.paperText}>Paper 1</Text>
-// //       </TouchableOpacity>
-// //       <TouchableOpacity
-// //         style={styles.paperButton}
-// //         onPress={() =>
-// //           navigation.navigate('PDFViewerScreen', {
-// //             // Consistent screen name
-// //             source: pdfData[year].paper2, // Changed from uri to source
-// //             title: `${year} - Paper 2`,
-// //           })
-// //         }>
-// //         <Text style={styles.paperText}>Paper 2</Text>
-// //       </TouchableOpacity>
-// //     </View>
-// //   );
-
-// //   return (
-// //     <FlatList
-// //       data={Object.keys(pdfData).sort((a, b) => b - a)} // Sort years in descending order
-// //       renderItem={renderItem}
-// //       keyExtractor={item => item}
-// //       contentContainerStyle={styles.container}
-// //     />
-// //   );
-// // };
-
-// const pdfData = {
-//   2014: {
-//     paper1: {uri: require('../assets/pdf/2014/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2014/paper2.pdf').uri, cache: true},
-//   },
-//   2015: {
-//     paper1: {uri: require('../assets/pdf/2015/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2015/paper2.pdf').uri, cache: true},
-//   },
-//   2016: {
-//     paper1: {uri: require('../assets/pdf/2016/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2016/paper2.pdf').uri, cache: true},
-//   },
-//   2017: {
-//     paper1: {uri: require('../assets/pdf/2017/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2017/paper2.pdf').uri, cache: true},
-//   },
-//   2018: {
-//     paper1: {uri: require('../assets/pdf/2018/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2018/paper2.pdf').uri, cache: true},
-//   },
-//   2019: {
-//     paper1: {uri: require('../assets/pdf/2019/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2019/paper2.pdf').uri, cache: true},
-//   },
-//   2020: {
-//     paper1: {uri: require('../assets/pdf/2020/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2020/paper2.pdf').uri, cache: true},
-//   },
-//   2021: {
-//     paper1: {uri: require('../assets/pdf/2021/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2021/paper2.pdf').uri, cache: true},
-//   },
-//   2022: {
-//     paper1: {uri: require('../assets/pdf/2022/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2022/paper2.pdf').uri, cache: true},
-//   },
-//   2023: {
-//     paper1: {uri: require('../assets/pdf/2023/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2023/paper2.pdf').uri, cache: true},
-//   },
-//   2024: {
-//     paper1: {uri: require('../assets/pdf/2024/paper1.pdf').uri, cache: true},
-//     paper2: {uri: require('../assets/pdf/2024/paper2.pdf').uri, cache: true},
-//   },
-// };
-
-// const PDFListScreen = ({navigation}) => {
-//   const renderItem = ({item: year}) => (
-//     <View style={styles.yearContainer}>
-//       <Text style={styles.yearText}>{year}</Text>
-//       <TouchableOpacity
-//         style={styles.paperButton}
-//         onPress={() =>
-//           navigation.navigate('PDFViewerScreen', {
-//             source: pdfData[year].paper1,
-//             title: `${year} - Paper 1`,
-//           })
-//         }>
-//         <Text style={styles.paperText}>Paper 1</Text>
-//       </TouchableOpacity>
-//       <TouchableOpacity
-//         style={styles.paperButton}
-//         onPress={() =>
-//           navigation.navigate('PDFViewerScreen', {
-//             source: pdfData[year].paper2,
-//             title: `${year} - Paper 2`,
-//           })
-//         }>
-//         <Text style={styles.paperText}>Paper 2</Text>
-//       </TouchableOpacity>
-//     </View>
-//   );
-
-//   return (
-//     <FlatList
-//       data={Object.keys(pdfData).sort((a, b) => b - a)}
-//       renderItem={renderItem}
-//       keyExtractor={item => item}
-//       contentContainerStyle={styles.container}
-//     />
-//   );
+//   // return (
+//   //   <FlatList
+//   //     data={years}
+//   //     renderItem={renderItem}
+//   //     keyExtractor={item => item}
+//   //     contentContainerStyle={styles.container}
+//   //   />
+//   // );
 // };
 
 // const styles = StyleSheet.create({
@@ -298,59 +150,127 @@
 
 // export default PDFListScreen;
 
+/*** */
+
+// import React from 'react';
+// import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
+
+// const years = [
+//   '2014',
+//   '2015',
+//   '2016',
+//   '2017',
+//   '2018',
+//   '2019',
+//   '2020',
+//   '2021',
+//   '2022',
+//   '2023',
+//   '2024',
+// ];
+
+// const PDFListScreen = ({navigation}) => {
+//   const getPdfPath = (year, paperNumber) => {
+//     const path = `file:///android_asset/pdf/${year}/paper${paperNumber}.pdf`;
+//     console.log('PDF Path:', path); // Debugging statement
+//     return path;
+//   };
+
+//   const renderItem = ({item: year}) => (
+//     <View style={styles.yearContainer}>
+//       <Text style={styles.yearText}>{year}</Text>
+//       <TouchableOpacity
+//         style={styles.paperButton}
+//         onPress={() =>
+//           navigation.navigate('PDFViewerScreen', {
+//             source: {uri: getPdfPath(year, 1)},
+//             title: `${year} - Paper 1`,
+//           })
+//         }>
+//         <Text style={styles.paperText}>Paper 1</Text>
+//       </TouchableOpacity>
+//       <TouchableOpacity
+//         style={styles.paperButton}
+//         onPress={() =>
+//           navigation.navigate('PDFViewerScreen', {
+//             source: {uri: getPdfPath(year, 2)},
+//             title: `${year} - Paper 2`,
+//           })
+//         }>
+//         <Text style={styles.paperText}>Paper 2</Text>
+//       </TouchableOpacity>
+//     </View>
+//   );
+
+//   return (
+//     <FlatList
+//       data={years}
+//       renderItem={renderItem}
+//       keyExtractor={item => item}
+//       contentContainerStyle={styles.container}
+//     />
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     padding: 16,
+//   },
+//   yearContainer: {
+//     marginBottom: 16,
+//   },
+//   yearText: {
+//     fontSize: 18,
+//     fontWeight: 'bold',
+//     marginBottom: 8,
+//   },
+//   paperButton: {
+//     backgroundColor: '#4caf50',
+//     padding: 10,
+//     marginVertical: 4,
+//     borderRadius: 5,
+//   },
+//   paperText: {
+//     color: 'white',
+//     textAlign: 'center',
+//   },
+// });
+
+// export default PDFListScreen;
+
 // PDFListScreen.js
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 
-// PDF data structure with proper source formatting
-const pdfData = {
-  2014: {
-    paper1: {uri: 'asset:/pdf/2014/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2014/paper2.pdf', cache: true},
-  },
-  2015: {
-    paper1: {uri: 'asset:/pdf/2015/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2015/paper2.pdf', cache: true},
-  },
-  2016: {
-    paper1: {uri: 'asset:/pdf/2016/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2016/paper2.pdf', cache: true},
-  },
-  2017: {
-    paper1: {uri: 'asset:/pdf/2017/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2017/paper2.pdf', cache: true},
-  },
-  2018: {
-    paper1: {uri: 'asset:/pdf/2018/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2018/paper2.pdf', cache: true},
-  },
-  2019: {
-    paper1: {uri: 'asset:/pdf/2019/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2019/paper2.pdf', cache: true},
-  },
-  2020: {
-    paper1: {uri: 'asset:/pdf/2020/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2020/paper2.pdf', cache: true},
-  },
-  2021: {
-    paper1: {uri: 'assets:/pdf/2021/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2021/paper2.pdf', cache: true},
-  },
-  2022: {
-    paper1: {uri: 'asset:/pdf/2022/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2022/paper2.pdf', cache: true},
-  },
-  2023: {
-    paper1: {uri: 'asset:/pdf/2023/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2023/paper2.pdf', cache: true},
-  },
-  2024: {
-    paper1: {uri: 'asset:/pdf/2024/paper1.pdf', cache: true},
-    paper2: {uri: 'asset:/pdf/2024/paper2.pdf', cache: true},
-  },
-};
+const years = [
+  '2014',
+  '2015',
+  '2016',
+  '2017',
+  '2018',
+  '2019',
+  '2020',
+  '2021',
+  '2022',
+  '2023',
+  '2024',
+];
 
 const PDFListScreen = ({navigation}) => {
+  // const getPdfPath = (year, paperNumber) => {
+  //   // Update this with the appropriate Google Drive URL format
+  //   return `https://drive.google.com/uc?export=view&id=PAPER_FILE_ID_HERE`;
+  // };
+
+  const getPdfPath = (year, paperNumber) => {
+    if (year === '2014' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0';
+    } else {
+      // Use your previous logic for other years/papers
+      return `https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0`;
+    }
+  };
+
   const renderItem = ({item: year}) => (
     <View style={styles.yearContainer}>
       <Text style={styles.yearText}>{year}</Text>
@@ -358,7 +278,7 @@ const PDFListScreen = ({navigation}) => {
         style={styles.paperButton}
         onPress={() =>
           navigation.navigate('PDFViewerScreen', {
-            source: pdfData[year].paper1,
+            source: {uri: getPdfPath(year, 1)},
             title: `${year} - Paper 1`,
           })
         }>
@@ -368,7 +288,7 @@ const PDFListScreen = ({navigation}) => {
         style={styles.paperButton}
         onPress={() =>
           navigation.navigate('PDFViewerScreen', {
-            source: pdfData[year].paper2,
+            source: {uri: getPdfPath(year, 2)},
             title: `${year} - Paper 2`,
           })
         }>
@@ -379,9 +299,9 @@ const PDFListScreen = ({navigation}) => {
 
   return (
     <FlatList
-      data={Object.keys(pdfData).sort((a, b) => b - a)}
-      renderItem={renderItem}
+      data={years}
       keyExtractor={item => item}
+      renderItem={renderItem}
       contentContainerStyle={styles.container}
     />
   );
@@ -389,21 +309,21 @@ const PDFListScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 16,
   },
   yearContainer: {
-    marginBottom: 20,
+    marginBottom: 16,
   },
   yearText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 8,
   },
   paperButton: {
-    padding: 10,
     backgroundColor: '#4caf50',
+    padding: 10,
+    marginVertical: 4,
     borderRadius: 5,
-    marginTop: 5,
   },
   paperText: {
     color: 'white',
