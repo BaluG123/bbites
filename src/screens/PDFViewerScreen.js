@@ -8,33 +8,69 @@
 //   ActivityIndicator,
 // } from 'react-native';
 // import Pdf from 'react-native-pdf';
+// import RNFS from 'react-native-fs';
 
 // const PDFViewerScreen = ({route}) => {
 //   const {source, title} = route.params;
-//   console.log(source, '@#@SOURCE');
 //   const [loading, setLoading] = useState(true);
 //   const [error, setError] = useState(null);
+//   const [localPath, setLocalPath] = useState(null);
+
+//   useEffect(() => {
+//     const downloadFile = async () => {
+//       try {
+//         const downloadDest = `${RNFS.DocumentDirectoryPath}/temp.pdf`;
+//         const {promise} = RNFS.downloadFile({
+//           fromUrl: source.uri,
+//           toFile: downloadDest,
+//         });
+//         await promise;
+//         setLocalPath(downloadDest);
+//         setLoading(false);
+//       } catch (err) {
+//         console.error('Download error:', err);
+//         setError(err.toString());
+//         setLoading(false);
+//       }
+//     };
+
+//     downloadFile();
+//   }, [source.uri]);
 
 //   return (
 //     <SafeAreaView style={styles.container}>
 //       <Text style={styles.title}>{title}</Text>
-//       {loading && <ActivityIndicator size="large" />}
-//       {error && <Text style={styles.errorText}>Error: {error}</Text>}
-//       {source && (
-//         <Pdf
-//           source={source}
-//           onLoadComplete={(numberOfPages, filePath) => {
-//             console.log(`PDF loaded: ${numberOfPages} pages`);
-//             setLoading(false);
-//           }}
-//           onError={error => {
-//             console.log('PDF Error:', error);
-//             setError(error.toString());
-//             setLoading(false);
-//           }}
-//           style={styles.pdf}
-//         />
-//       )}
+//       <View style={styles.pdfContainer}>
+//         {loading && (
+//           <View style={styles.loadingContainer}>
+//             <ActivityIndicator size="large" color="#4caf50" />
+//             <Text style={styles.loadingText}>Loading PDF...</Text>
+//           </View>
+//         )}
+//         {error && (
+//           <View style={styles.errorContainer}>
+//             <Text style={styles.errorText}>Error loading PDF: {error}</Text>
+//           </View>
+//         )}
+//         {localPath && (
+//           <Pdf
+//             source={{uri: `file://${localPath}`}}
+//             style={styles.pdf}
+//             onLoadComplete={(numberOfPages, filePath) => {
+//               console.log(`PDF loaded: ${numberOfPages} pages`);
+//             }}
+//             onError={error => {
+//               console.log('PDF Error:', error);
+//               setError(error.toString());
+//             }}
+//             onLoadProgress={percentage => {
+//               console.log(`Loading: ${percentage * 100}%`);
+//             }}
+//             enablePaging={true}
+//             trustAllCerts={true}
+//           />
+//         )}
+//       </View>
 //     </SafeAreaView>
 //   );
 // };
@@ -46,20 +82,33 @@
 //   },
 //   title: {
 //     fontSize: 20,
-//     fontWeight: 'bold',
 //     textAlign: 'center',
-//     marginVertical: 10,
+//     margin: 10,
 //   },
-//   pdf: {
+//   pdfContainer: {
 //     flex: 1,
-//     width: Dimensions.get('window').width,
-//     height: Dimensions.get('window').height,
+//   },
+//   loadingContainer: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   loadingText: {
+//     marginTop: 10,
+//     fontSize: 16,
+//   },
+//   errorContainer: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
 //   },
 //   errorText: {
 //     color: 'red',
 //     fontSize: 16,
-//     textAlign: 'center',
-//     marginVertical: 20,
+//   },
+//   pdf: {
+//     flex: 1,
+//     width: Dimensions.get('window').width,
 //   },
 // });
 
@@ -106,7 +155,9 @@ const PDFViewerScreen = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>{title}</Text>
+      </View>
       <View style={styles.pdfContainer}>
         {loading && (
           <View style={styles.loadingContainer}>
@@ -147,10 +198,28 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  header: {
+    backgroundColor: 'gray',
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    marginTop: 10,
+    alignSelf: 'center',
+    borderRadius: 25,
+    borderWidth: 1,
+    borderColor: 'green',
+  },
+  headerTitle: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   pdfContainer: {
     flex: 1,

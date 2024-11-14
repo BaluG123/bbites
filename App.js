@@ -116,7 +116,7 @@ export default function App() {
             <Stack.Screen
               name="PDFViewerScreen"
               component={PDFViewerScreen}
-              options={{title: 'PDF Detail'}}
+              options={{title: 'PDF Viewer'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
