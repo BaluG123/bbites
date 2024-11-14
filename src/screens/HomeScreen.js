@@ -38,7 +38,7 @@ const HomeScreen = ({navigation}) => {
     {
       title: 'Previous Year Papers',
       subtitle: 'Question papers with detailed solutions',
-      route: 'PreviousYearPapers',
+      route: 'PDFListScreen',
     },
     {
       title: 'Daily Quiz',

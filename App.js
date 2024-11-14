@@ -19,6 +19,8 @@ import NewsAnalysis from './src/screens/NewsAnalysis';
 import MockTests from './src/screens/MockTests';
 import {enableScreens} from 'react-native-screens';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import PDFListScreen from './src/screens/PDFListScreen';
+import PDFViewerScreen from './src/screens/PDFViewerScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -105,6 +107,16 @@ export default function App() {
               name="MockTests"
               component={MockTests}
               options={{title: 'Mock Tests'}}
+            />
+            <Stack.Screen
+              name="PDFListScreen"
+              component={PDFListScreen}
+              options={{title: 'PDF List'}}
+            />
+            <Stack.Screen
+              name="PDFViewerScreen"
+              component={PDFViewerScreen}
+              options={{title: 'PDF Detail'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
