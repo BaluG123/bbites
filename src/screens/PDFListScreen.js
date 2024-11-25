@@ -115,11 +115,62 @@ const PDFListScreen = ({navigation}) => {
     '2024',
   ];
 
+  // const getPdfPath = (year, paperNumber) => {
+  //   if (year === '2014' && paperNumber === 1) {
+  //     return 'https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0';
+  //   } else {
+  //     // Use your previous logic for other years/papers
+  //     return 'https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0';
+  //   }
+  // };
+
   const getPdfPath = (year, paperNumber) => {
     if (year === '2014' && paperNumber === 1) {
       return 'https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0';
+    } else if (year === '2014' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1U2w7FogD96HD7M9UA3oMrZg2KNTVQBLt';
+    } else if (year === '2015' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1dTrCu2X-krJnz5Zb6r-8JVgfwBem8vaw';
+    } else if (year === '2015' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1gC4EmAKmDmDLSKWPSoUVFzPqfX77WIPi';
+    } else if (year === '2016' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1jQx75GOifaTpvSJENP5iJUJfRFrZ0tg5';
+    } else if (year === '2016' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1UXzMlKGGR1ercIXB4TZkM1yqhmMJmWTf';
+    } else if (year === '2017' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1dL8rYzPmI20X0LIerTI54rxDP0LNJ59_';
+    } else if (year === '2017' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1kH4JV-OB7F61FTIK6iCsa17vaYYRzwPB';
+    } else if (year === '2018' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1Yl8n8O3uHo7FHuJnRd_5CXWO0KCQs47P';
+    } else if (year === '2018' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1Yz2LdrJLCy8Nkf89rR1FC3eRCJ1-IHlO';
+    } else if (year === '2019' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=141fMQ9benZ2h2ckN95ziqjZN-anSrPgx';
+    } else if (year === '2019' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1JwnI4nVrdZVU8cvuPb-bo-IpkLs6CARz';
+    } else if (year === '2020' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1S1eAWR_WeY7CP4K_Hca0LsGwQx9-b9d4';
+    } else if (year === '2020' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1USZ0f2V0_FPQkUZNw0mMziw82sTUPOdm';
+    } else if (year === '2021' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1DK9XQ7EA8Yj-Le9xnlCt2IwqtQk6ydwT';
+    } else if (year === '2021' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1UyK1ntHhXJkrByRTHmii2sbnOSA3hlO1';
+    } else if (year === '2022' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1OYl9LqGbZijczPLPrLeZo9R181QYt3HN';
+    } else if (year === '2022' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1j9u2g60WxbXKxDUDM7ljHgYh9NFrsHmm';
+    } else if (year === '2023' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1fWEePukANYyz_qrqgsGPsHuKFxnXX574';
+    } else if (year === '2023' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1Ub_HFbF7Jk9quvYSeDiyHuSFE7oIPp07';
+    } else if (year === '2024' && paperNumber === 1) {
+      return 'https://drive.google.com/uc?export=download&id=1BmPSTr-n_8Zm8VWSqlOamjb77f0J6WYw';
+    } else if (year === '2024' && paperNumber === 2) {
+      return 'https://drive.google.com/uc?export=download&id=1p7HdPPeqsu5KORsfIxRU-EGod1J_3OxA';
     } else {
-      // Use your previous logic for other years/papers
+      // Default link or handle other cases
       return 'https://drive.google.com/uc?export=download&id=1U-XekUI9I5Pbjse8ps7RDTmX9rBvJak0';
     }
   };
