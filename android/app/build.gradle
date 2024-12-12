@@ -98,8 +98,8 @@ android {
         applicationId "com.brainbites"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2026
-        versionName "26.0"
+        versionCode 2027
+        versionName "26.0.1"
         minSdkVersion 24
         targetSdkVersion 34
     }
